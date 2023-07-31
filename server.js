@@ -17,6 +17,7 @@ function convertToHexString(num, length) {
 
 
 function run(){
+    console.log('started...');
     var found = false;
     const bottom = BigInt("0x0000000000000000000000000000000000000000000000020000000000000000");
     //var bottom = 36893488147419103232n;
