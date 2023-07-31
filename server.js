@@ -29,12 +29,12 @@ function run(){
         hexString = convertToHexString(index, 64);
         var privateKey = Buffer.from(hexString, 'hex')
         var key = wif.encode(128, privateKey, true) // for the testnet use: wif.encode(239, ...
-        console.log(key);
+        //console.log(key);
         // => KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU73sVHnoWn
 
         const keyPair = ECPair.fromWIF(key,);
         const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
-        console.log(address);
+        //console.log(address);
 
         if(address == winnerAdd){
             console.log('SOLVED');
