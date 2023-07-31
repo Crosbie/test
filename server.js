@@ -1,73 +1,56 @@
-var Wallet = require('ethereumjs-wallet');
-var EthUtil = require('ethereumjs-util');
-var ethers = require('ethers');
+var wif = require('wif');
+var ECPairFactory = require('ecpair').ECPairFactory;
+var ecc = require('tiny-secp256k1');
+var bitcoin =  require('bitcoinjs-lib');
+const ECPair = ECPairFactory(ecc);
 
-var scammer = "0x1bac08001d761c303901d5e32273a24c07d3f3da";
+var sampleKey = "000000000000000000000000000000000000000000000003e830b7e4f07bf64d";
+var sampleAdd = "1NeKZ5qu6V6KymoLFb1xLpxtuHg9uhKL7t";
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
+var winnerAdd = "13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so";
 
 
-// Function to generate a string of zeros with the specified length
-function generateZerosString(length) {
-    return '0'.repeat(length);
-  }
-  
-  // Function to convert a number to a hexadecimal string with a specified length
-  function convertToHexString(num, length) {
+function convertToHexString(num, length) {
     const hexString = num.toString(16);
     return hexString.padStart(length, '0');
   }
-  
-  // Function to run the loop and generate the strings
-  function generateHexStrings() {
-    const finalValue = BigInt('0xffffffffffffffff'); // 64 'f's in hexadecimal
-    const iterations = finalValue + 1n; // Include the final iteration
-  
-    for (let i = 161366579n; i < iterations; i++) {
-      const hexString = convertToHexString(i, 64);
-      
-
-      if(hexString == "0000000000000000000000000000000000000000000000000000000000000000"){
-        continue;
-      }
-
-      const privateKeyString = "0x"+hexString;//your privateKey
-      const privateKeyBuffer = EthUtil.toBuffer(privateKeyString);
-      var wallet = Wallet['default'].fromPrivateKey(privateKeyBuffer);
-    //   const publicKey = wallet.getPublicKeyString();
-    //   console.log(publicKey);
-      const address = wallet.getAddressString();
-      console.log(hexString,address);
-
-      if(address == scammer){
-        console.log(address);
-        console.log("GOTEM",privateKeyString)
-        return;
-      }
-      
 
 
-    }
-  }
-  
-//   generateHexStrings();
-
-function generatePrivateKeys(){
+function run(){
     var found = false;
-    
-    while(!found){
-        var wallet = Wallet['default'].generate();
-        var address = wallet.getAddressString();
-        // console.log(wallet.getPrivateKeyString(),address);
+    const bottom = BigInt("0x0000000000000000000000000000000000000000000000020000000000000000");
+    //var bottom = 36893488147419103232n;
+    // var top = 73786976294838206463n;
+    const top = BigInt("0x000000000000000000000000000000000000000000000003ffffffffffffffff");
+    var index = bottom;
+    var hexString;
 
-        if(address == scammer){
-            console.log(address);
-            console.log("GOTCHA",wallet.getPrivateKeyString())
+    while(!found){
+        hexString = convertToHexString(index, 64);
+        var privateKey = Buffer.from(hexString, 'hex')
+        var key = wif.encode(128, privateKey, true) // for the testnet use: wif.encode(239, ...
+        console.log(key);
+        // => KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU73sVHnoWn
+
+        const keyPair = ECPair.fromWIF(key,);
+        const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
+        console.log(address);
+
+        if(address == winnerAdd){
+            console.log('SOLVED');
+            console.log(address,key);
+            found = true;
+        }
+        index++;
+
+        if(index >= top){
+            console.log('NOT FOUND!!');
             found=true;
-            return;
         }
     }
+
 }
-generatePrivateKeys();
+
+
+
+run()
