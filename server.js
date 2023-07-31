@@ -93,7 +93,7 @@ if (isMainThread) {
   // This is the main thread
   const numberOfWorkers = 5;
 
-  for (let i = 0; i <= numberOfWorkers; i++) {
+  for (let i = 0; i < numberOfWorkers; i++) {
     const worker = new Worker(__filename, {
       workerData: {
         workerId: i,
