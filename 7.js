@@ -57,7 +57,7 @@ function run(){
                 // start++;
 
                 if(start == end){
-                    console.log('NOT FOUND, reached top bound 0!!');
+                    console.log('NOT FOUND, reached top bound:',chunkIndex);
                     found=true;
                     return cb(null,address+" "+key);
                 }
