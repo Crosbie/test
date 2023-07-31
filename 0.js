@@ -32,6 +32,7 @@ function convertToHexString(num, length) {
 
 
 function run(){
+    console.log('in 0.js');
     var found = false;
 
     async.parallel([
