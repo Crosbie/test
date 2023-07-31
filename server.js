@@ -67,8 +67,8 @@ function run(chunkIndex){
         //parentPort.postMessage(`Worker ${workerData.workerId}: `+key);
 
         if(address == winnerAdd){
-            console.log('SOLVED');
-            console.log(address,key);
+            parentPort.postMessage(`Worker ${workerData.workerId} solved.`);
+            parentPort.postMessage(key);
             found = true;
         }
         // start++;
