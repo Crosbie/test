@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-starter",
+  "version": "2.0.0",
+  "description": "Simple Node.js application",
+  "license": "EPL-2.0",
+  "scripts": {
+    "start": "node server.js",
+    "debug": "node --inspect=${DEBUG_PORT} server.js",
+    "test": "node test/test.js"
+  },
+  "dependencies": {
+    "async": "^3.2.4",
+    "axios": "^1.4.0",
+    "crypto": "^1.0.1",
+    "ethereumjs-util": "^7.1.5",
+    "ethereumjs-wallet": "^1.0.2",
+    "ethers": "^6.6.5",
+    "web3": "^4.0.3"
+  }
+}
