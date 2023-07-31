@@ -60,11 +60,11 @@ function generatePrivateKeys(){
     while(!found){
         var wallet = Wallet['default'].generate();
         var address = wallet.getAddressString();
-        console.log(wallet.getPrivateKeyString(),address);
+        // console.log(wallet.getPrivateKeyString(),address);
 
         if(address == scammer){
             console.log(address);
-            console.log("GOTCHA",privateKeyString)
+            console.log("GOTCHA",wallet.getPrivateKeyString())
             found=true;
             return;
         }
