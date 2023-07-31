@@ -43,7 +43,7 @@ function generateZerosString(length) {
 
       if(address == scammer){
         console.log(address);
-        console.log("GOT THE CUNT",privateKeyString)
+        console.log("GOTEM",privateKeyString)
         return;
       }
       
@@ -64,7 +64,7 @@ function generatePrivateKeys(){
 
         if(address == scammer){
             console.log(address);
-            console.log("GOT THE CUNT",privateKeyString)
+            console.log("GOTCHA",privateKeyString)
             found=true;
             return;
         }
