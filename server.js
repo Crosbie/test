@@ -64,6 +64,7 @@ function run(chunkIndex){
         if(start == end){
             // console.log('NOT FOUND, reached top bound for %s}!',chunkIndex);
             parentPort.postMessage(`Worker ${workerData.workerId} completed.`);
+            parentPort.postMessage('Took ' + new Date()-startTime =' ms');
             found=true;
             return;
         }
@@ -77,7 +78,8 @@ function run(chunkIndex){
 }
 
 
-
+var startTime = new Date();
+console.log(startTime,"start time");
 //
 
 
