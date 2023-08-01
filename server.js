@@ -154,8 +154,8 @@ function run(chunkIndex){
 
         if(start == end){
             // console.log('NOT FOUND, reached top bound for %s}!',chunkIndex);
-            parentPort.postMessage(`Worker ${workerData.workerId} completed.`);
-            parentPort.postMessage('Took ' + new Date()-startTime =' ms');
+            parentPort.postMessage(`Worker ${workerData.workerId} completed.`);            
+            parentPort.postMessage(`Took ${new Date()-startTime}  ms`);
             found=true;
             return;
         }
