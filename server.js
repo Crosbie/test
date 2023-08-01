@@ -50,7 +50,7 @@ function run(chunkIndex){
         const keyPair = ECPair.fromWIF(key,);
         var { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
         // console.log(key,address);
-        parentPort.postMessage(`Worker ${workerData.workerId}: `+key);
+        // parentPort.postMessage(`Worker ${workerData.workerId}: `+key);
 
         if(address == winnerAdd){
             parentPort.postMessage(`Worker ${workerData.workerId} solved.`);
