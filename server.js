@@ -65,7 +65,7 @@ function run(chunkIndex){
             // console.log('NOT FOUND, reached top bound for %s}!',chunkIndex);
             parentPort.postMessage(`Worker ${workerData.workerId} completed.`);
             found=true;
-            return cb(null,address+" "+key);
+            return;
         }
         if(found===true){
             // console.log('FOUND');
@@ -85,7 +85,7 @@ const { Worker, isMainThread, parentPort, workerData } = require('worker_threads
 
 if (isMainThread) {
   // This is the main thread
-  const numberOfWorkers = 2;
+  const numberOfWorkers = 3;
 
   for (let i = 0; i < numberOfWorkers; i++) {
     const worker = new Worker(__filename, {
