@@ -70,7 +70,11 @@ function run(chunkIndex){
 
 
 var startTime = new Date();
-console.log(startTime,"start time");
+console.log("================================================");
+console.log("Start Time: ",startTime);
+console.log("Chunks: ",chunks.length());
+console.log("Offset: ",offset);
+console.log("================================================");
 //
 
 
