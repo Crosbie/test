@@ -127,11 +127,12 @@ function run(chunkIndex){
     var found = false;
 
     // console.log(`Worker ${workerData.workerId}`);
-    parentPort.postMessage(`Worker ${workerData.workerId}`);
+    
 
     var hexString,privateKey,key;
     var start = BigInt(miniChunk[chunkIndex][0]);
     var end = BigInt(miniChunk[chunkIndex][1]);
+  parentPort.postMessage(`Worker ${workerData.workerId} : ${start} - ${end}`);
     // console.log(start,end);
     for(start=start;start<=end;start++){
         hexString = convertToHexString(start, 64);
