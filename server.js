@@ -26,12 +26,12 @@ function run(chunkIndex){
     var found = false;
 
     // console.log(`Worker ${workerData.workerId}`);
-    parentPort.postMessage(`Worker ${workerData.workerId}`);
+    
 
     var hexString,privateKey,key;
     var start = BigInt(miniChunk[chunkIndex][0]);
     var end = BigInt(miniChunk[chunkIndex][1]);
-    // console.log(start,end);
+    parentPort.postMessage(`Worker ${workerData.workerId} from ${start} to ${end}`);
     for(start=start;start<=end;start++){
         hexString = convertToHexString(start, 64);
         privateKey = Buffer.from(hexString, 'hex')
@@ -45,6 +45,7 @@ function run(chunkIndex){
         if(address == winnerAdd){
             parentPort.postMessage(`Worker ${workerData.workerId} solved.`);
             parentPort.postMessage(key);
+            parentPort.postMessage(`Took ${new Date()-startTime}  ms`);
             // console.log(address,key);
             found = true;
             return;
