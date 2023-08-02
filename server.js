@@ -29,8 +29,8 @@ function run(chunkIndex){
     
 
     var hexString,privateKey,key;
-    var start = BigInt(miniChunk[chunkIndex][0]);
-    var end = BigInt(miniChunk[chunkIndex][1]);
+    var start = BigInt(chunks[chunkIndex][0]);
+    var end = BigInt(chunks[chunkIndex][1]);
     parentPort.postMessage(`Worker ${workerData.workerId} from ${start} to ${end}`);
     for(start=start;start<=end;start++){
         hexString = convertToHexString(start, 64);
