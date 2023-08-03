@@ -8,7 +8,7 @@ var async = require('async');
 const ECPair = ECPairFactory(ecc);
 
 var winnerAdd = "13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so";
-var offset =20;
+var offset =60;
 
 
 // bound 2 chunk 1
