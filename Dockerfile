@@ -1,3 +1,5 @@
+FROM ubuntu:latest
+
 RUN git clone https://github.com/albertobsd/keyhunt.git
 RUN cd keytools
 RUN make
