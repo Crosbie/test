@@ -1,7 +1,12 @@
 # syntax=docker/dockerfile:1
    
 FROM ubuntu
-WORKDIR /
+
+
+# install git
+RUN apt-get update \
+    apt-get upgrade \
+    apt-get install git
 
 RUN git clone https://github.com/albertobsd/keyhunt.git
 RUN cd keyhunt
