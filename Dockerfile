@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
    
-FROM node:18-alpine
-WORKDIR /app
+FROM ubuntu
+WORKDIR /
 
 RUN git clone https://github.com/albertobsd/keyhunt.git
 RUN cd keyhunt
