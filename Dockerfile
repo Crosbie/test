@@ -4,9 +4,9 @@ FROM ubuntu
 
 
 # install git
-RUN apt-get update \
-    apt-get upgrade \
-    apt-get install git
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get install git
 
 RUN git clone https://github.com/albertobsd/keyhunt.git
 RUN cd keyhunt
